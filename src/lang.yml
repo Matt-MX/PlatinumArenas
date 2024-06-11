@@ -1,0 +1,6 @@
+prefix: "&7[PlatinumArenas&7]"
+
+feedback:
+  permissions: "&cYou don't have permission to run this command!"
+  player-only: "&cThis command must be run by players!"
+  arenas-not-loaded: "&cArenas have not finished loading yet!"

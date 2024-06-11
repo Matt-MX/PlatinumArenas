@@ -1,21 +1,18 @@
 package com.strangeone101.platinumarenas;
 
+import com.strangeone101.platinumarenas.commands.BorderCommand;
 import net.md_5.bungee.api.ChatColor;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
 
+import javax.swing.text.html.Option;
 import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Locale;
-import java.util.Map;
+import java.util.*;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
@@ -24,6 +21,23 @@ import java.util.zip.Deflater;
 import java.util.zip.Inflater;
 
 public class Util {
+
+    public static String permissionsMessage() {
+        return translatableOrError("feedback.permissions");
+    }
+
+    public static String translatablePrefix(String key) {
+        return PlatinumArenas.PREFIX + ChatColor.RESET + " " + translatableOrError(key);
+    }
+
+    public static String translatableOrError(String key) {
+        return translatable(key).orElse("&cError: The lang key '%s' could not be found!");
+    }
+
+    public static Optional<String> translatable(String key) {
+        String value = PlatinumArenas.languageFile.getString(key);
+        return Optional.ofNullable(value);
+    }
 
     private static final Pattern hexColorCodes = Pattern.compile("#[a-fA-F0-9]{6}");
 

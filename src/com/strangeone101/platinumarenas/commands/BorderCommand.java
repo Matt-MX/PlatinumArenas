@@ -1,9 +1,6 @@
 package com.strangeone101.platinumarenas.commands;
 
-import com.strangeone101.platinumarenas.Arena;
-import com.strangeone101.platinumarenas.ArenaCommand;
-import com.strangeone101.platinumarenas.PlatinumArenas;
-import com.strangeone101.platinumarenas.Section;
+import com.strangeone101.platinumarenas.*;
 import org.bukkit.ChatColor;
 import org.bukkit.Location;
 import org.bukkit.Material;
@@ -30,21 +27,21 @@ public class BorderCommand extends ArenaCommand {
     @Override
     public void execute(CommandSender sender, List<String> args) {
         if (!sender.hasPermission("platinumarenas.list")) {
-            sender.sendMessage(PlatinumArenas.PREFIX + ChatColor.RED + " You don't have permission to run this command!");
+            sender.sendMessage(Util.translatablePrefix("feedback.permissions"));
             return;
         }
 
         if (!(sender instanceof Player)) {
-            sender.sendMessage(PlatinumArenas.PREFIX + ChatColor.RED + " This command must be run by players!");
+            sender.sendMessage(Util.translatablePrefix("feedback.player-only"));
             return;
         }
 
         if (!PlatinumArenas.INSTANCE.isReady()) {
-            sender.sendMessage(PlatinumArenas.PREFIX + ChatColor.RED + " Arenas have not finished loading yet!");
+            sender.sendMessage(Util.translatablePrefix("feedback.arenas-not-loaded"));
             return;
         }
 
-        if (args.size() == 0) {
+        if (args.isEmpty()) {
             if (borders.containsKey(sender)) {
                 removePlayer(borders.get(sender), ((Player)sender));
                 sender.sendMessage(PlatinumArenas.PREFIX + ChatColor.RED + " Border visibility disabled.");

@@ -6,6 +6,7 @@ import com.strangeone101.platinumarenas.region.IRegionSelection;
 import com.strangeone101.platinumarenas.region.WorldEditRegionSelection;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
+import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.scheduler.BukkitRunnable;
 
@@ -18,6 +19,7 @@ public class PlatinumArenas extends JavaPlugin {
     public static PlatinumArenas INSTANCE;
 
     public static final String PREFIX = Util.color("&8[#FB4BAE&lPvPHub&8]");
+    public static FileConfiguration languageFile;
 
     public static UUID DEFAULT_OWNER = UUID.fromString("00000000-0000-0000-0000-000000000000");
 
