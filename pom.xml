@@ -16,13 +16,17 @@
             <id>enginehub-maven</id>
             <url>http://maven.enginehub.org/repo/</url>
         </repository>
+        <repository>
+            <id>maven-GlareMaster</id>
+            <url>https://repo.glaremasters.me/repository/public/</url>
+        </repository>
     </repositories>
-    <scm>
-        <connection>scm:svn:http://127.0.0.1/dummy</connection>
-        <developerConnection>scm:svn:https://127.0.0.1/dummy</developerConnection>
-        <tag>HEAD</tag>
-        <url>http://127.0.0.1/dummy</url>
-    </scm>
+<!--    <scm>-->
+<!--        <connection>scm:svn:http://127.0.0.1/dummy</connection>-->
+<!--        <developerConnection>scm:svn:https://127.0.0.1/dummy</developerConnection>-->
+<!--        <tag>HEAD</tag>-->
+<!--        <url>http://127.0.0.1/dummy</url>-->
+<!--    </scm>-->
     <build>
         <sourceDirectory>src</sourceDirectory>
         <finalName>${project.artifactId}-${project.version}-r${buildNumber}</finalName>
@@ -43,28 +47,28 @@
             </resource>
         </resources>
         <plugins>
-            <plugin>
-                <groupId>org.codehaus.mojo</groupId>
-                <artifactId>buildnumber-maven-plugin</artifactId>
-                <version>1.4</version>
-                <executions>
-                    <execution>
-                        <phase>validate</phase>
-                        <goals>
-                            <goal>create</goal>
-                        </goals>
-                    </execution>
-                </executions>
-                <configuration>
-                    <format>{0,number}</format>
-                    <items>
-                        <item>buildNumber</item>
-                    </items>
-                    <doCheck>false</doCheck>
-                    <doUpdate>false</doUpdate>
-                    <revisionOnScmFailure>unknownbuild</revisionOnScmFailure>
-                </configuration>
-            </plugin>
+<!--            <plugin>-->
+<!--                <groupId>org.codehaus.mojo</groupId>-->
+<!--                <artifactId>buildnumber-maven-plugin</artifactId>-->
+<!--                <version>1.4</version>-->
+<!--                <executions>-->
+<!--                    <execution>-->
+<!--                        <phase>validate</phase>-->
+<!--                        <goals>-->
+<!--                            <goal>create</goal>-->
+<!--                        </goals>-->
+<!--                    </execution>-->
+<!--                </executions>-->
+<!--                <configuration>-->
+<!--                    <format>{0,number}</format>-->
+<!--                    <items>-->
+<!--                        <item>buildNumber</item>-->
+<!--                    </items>-->
+<!--                    <doCheck>false</doCheck>-->
+<!--                    <doUpdate>false</doUpdate>-->
+<!--                    <revisionOnScmFailure>unknownbuild</revisionOnScmFailure>-->
+<!--                </configuration>-->
+<!--            </plugin>-->
             <plugin>
                 <artifactId>maven-compiler-plugin</artifactId>
                 <version>3.10.1</version>
