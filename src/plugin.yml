@@ -1,6 +1,6 @@
 name: PlatinumArenas
 main: com.strangeone101.platinumarenas.PlatinumArenas
-version: ${project.version}-r${buildNumber}
+version: pvphub-platinum-arenas
 author: StrangeOne101
 prefix: PlatinumArenas
 softdepend: [WorldEdit]

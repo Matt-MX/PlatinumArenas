@@ -1,5 +1,6 @@
 package com.strangeone101.platinumarenas;
 
+import net.md_5.bungee.api.ChatColor;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
 
@@ -9,20 +10,40 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
-import java.nio.ByteBuffer;
-import java.nio.charset.StandardCharsets;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 import java.util.zip.DataFormatException;
 import java.util.zip.Deflater;
 import java.util.zip.Inflater;
 
 public class Util {
+
+    private static final Pattern hexColorCodes = Pattern.compile("#[a-fA-F0-9]{6}");
+
+    public static String color(String message) {
+        Matcher matcher = hexColorCodes.matcher(message);
+        while (matcher.find()) {
+            String hexCode = message.substring(matcher.start(), matcher.end());
+            String replaceSharp = hexCode.replace('#', 'x');
+
+            char[] ch = replaceSharp.toCharArray();
+            StringBuilder builder = new StringBuilder("");
+            for (char c : ch) {
+                builder.append("&" + c);
+            }
+
+            message = message.replace(hexCode, builder.toString());
+            matcher = hexColorCodes.matcher(message);
+        }
+        return ChatColor.translateAlternateColorCodes('&', message);
+    }
 
     public static boolean isMatch(byte[] pattern, byte[] input, int pos) {
         if (pos + (pattern.length - 1) > input.length) return false;
